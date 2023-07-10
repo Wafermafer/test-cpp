@@ -1,0 +1,50 @@
+# Archivos y directorios generados por Visual Studio Code
+.vscode/
+.vs/
+
+# Archivos ejecutables
+*.exe
+*.out
+
+# Directorios y archivos generados por CMake
+build/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+
+# Archivos y directorios generados por compiladores y herramientas de construcción
+Debug/
+Release/
+x64/
+*.o
+
+# Directorios y archivos generados por bibliotecas externas
+lib/
+libs/
+vendor/
+
+# Archivos de configuración local específicos de la plataforma
+*.user
+*.suo
+*.sln.docstates
+*.cproject
+*.settings/
+
+# Archivos de dependencias y configuraciones de paquetes
+*.dll
+*.dylib
+*.so
+*.a
+
+# Archivos de depuración de Visual Studio Code
+*.dSYM/
+*.pdb
+
+# Archivos de respaldo y temporales
+*.bak
+*.swp
+*.tmp
+
+# Archivos específicos del sistema operativo
+Thumbs.db
+.DS_Store
