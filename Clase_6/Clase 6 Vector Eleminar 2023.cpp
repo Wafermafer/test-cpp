@@ -1,4 +1,4 @@
-// Name : Vector Buscar 2023.cpp
+// Name : Vector Eliminar 2023.cpp
 
 #include <iostream>
 using namespace std;
@@ -8,8 +8,7 @@ void inicializar(int vec[], int cantP, int ValorIni);
 void mostrar(int vec[], int len1);
 void insertar(int vec[], int &len1, int valor, int pos);
 void insertarOrdenado(int vec[], int &len1, int valor);
-
-void sumarizo(int vec[], int lent1);
+void eliminar(int vec[],int &len, int pos);
 int buscar(int vec[], int len, int valor);
 
 int main()
@@ -19,7 +18,7 @@ int main()
     int len = 0;
     int n;
     int cont = 0;
-    int pos;
+    int aux;
 
     // 2 Inicializar el vector
     inicializar(numeros, 10, 0);
@@ -37,18 +36,20 @@ int main()
         cin >> n;
     }
 
-    // 4 Sumarizo el vector y buscar el valor 8 ( digo la posición o mensaje de que no esta )
-    sumarizo(numeros, len);
-    pos = buscar(numeros, len, 8);
-    if (pos == -1)
+    // 4 Eliminar el valor 6 del vector
+    aux = buscar(numeros, len, 6);
+    if (aux != -1)
     {
-        cout << "No encontro el valor 8" << endl;
+        eliminar(numeros, len, aux);
     }
     else
-        cout << "La posición en la que lo encontro es: " << pos << endl;
+    {
+        cout << "No estaba el 6" << endl;
+    }
 
     // 5 Mostrar el vector
     mostrar(numeros, len);
+    // cout<<numeros[pos]<<endl;
 
     return 0;
 }
@@ -68,16 +69,6 @@ void mostrar(int vec[], int len1)
     {
         cout << vec[i] << endl;
     }
-}
-
-void sumarizo(int vec[], int lent1)
-{
-    int suma = 0;
-    for (int i = 0; i < lent1; i++)
-    {
-        suma = suma + vec[i];
-    }
-    cout << suma << endl;
 }
 
 void insertar(int vec[], int &len1, int valor, int pos)
@@ -123,4 +114,14 @@ int buscar(int vec[], int len, int valor)
     }
     else
         return i;
+}
+
+void eliminar(int vec[], int &len, int pos)
+{
+    // ojo con el len-1
+    for (int i = pos; i< len-1; i++)
+    {
+        vec[i] = vec[i + 1];
+    }
+    len--;
 }

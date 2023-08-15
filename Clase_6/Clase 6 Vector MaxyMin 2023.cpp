@@ -1,4 +1,4 @@
-// Name : Vector Buscar 2023.cpp
+// Name : Vector Maximo y Minimo 2023.cpp
 
 #include <iostream>
 using namespace std;
@@ -8,9 +8,8 @@ void inicializar(int vec[], int cantP, int ValorIni);
 void mostrar(int vec[], int len1);
 void insertar(int vec[], int &len1, int valor, int pos);
 void insertarOrdenado(int vec[], int &len1, int valor);
-
-void sumarizo(int vec[], int lent1);
-int buscar(int vec[], int len, int valor);
+int maximoVector(int vec[], int len);
+int minimoVector(int vec[], int len);
 
 int main()
 {
@@ -19,7 +18,8 @@ int main()
     int len = 0;
     int n;
     int cont = 0;
-    int pos;
+    int max;
+    int min;
 
     // 2 Inicializar el vector
     inicializar(numeros, 10, 0);
@@ -37,18 +37,15 @@ int main()
         cin >> n;
     }
 
-    // 4 Sumarizo el vector y buscar el valor 8 ( digo la posición o mensaje de que no esta )
-    sumarizo(numeros, len);
-    pos = buscar(numeros, len, 8);
-    if (pos == -1)
-    {
-        cout << "No encontro el valor 8" << endl;
-    }
-    else
-        cout << "La posición en la que lo encontro es: " << pos << endl;
+    // 4 Mostrar el Max y el Min
+    max = maximoVector(numeros, len);
+    cout << "El valor máximo es: " << numeros[max] << " que se encuentra en la posición: " << max << endl;
+    min = minimoVector(numeros, len);
+    cout << "El valor mínimo es: " << numeros[min] << " que se encuentra en la posición: " << min << endl;
 
     // 5 Mostrar el vector
     mostrar(numeros, len);
+    // cout<<numeros[pos]<<endl;
 
     return 0;
 }
@@ -68,16 +65,6 @@ void mostrar(int vec[], int len1)
     {
         cout << vec[i] << endl;
     }
-}
-
-void sumarizo(int vec[], int lent1)
-{
-    int suma = 0;
-    for (int i = 0; i < lent1; i++)
-    {
-        suma = suma + vec[i];
-    }
-    cout << suma << endl;
 }
 
 void insertar(int vec[], int &len1, int valor, int pos)
@@ -110,17 +97,33 @@ void insertarOrdenado(int vec[], int &len1, int valor)
         insertar(vec, len1, valor, i);
 }
 
-int buscar(int vec[], int len, int valor)
+int maximoVector(int vec[], int len)
 {
-    int i = 0;
-    while (i < len && vec[i] != valor)
+    int posmax;
+    // Tomo la 1era posición como el max y luego comparo con ese valor.
+    posmax = 0;
+
+    // Arranco en i=1 porque el 0 tiene el max.
+    for (int i = 1; i<len; i++)
     {
-        i++;
+        if (vec[posmax] < vec[i])
+        {
+            posmax = i;
+        }
     }
-    if (i == len)
+    return posmax;
+}
+
+int minimoVector(int vec[], int len)
+{
+    int posmin;
+    posmin = 0;
+    for (int i = 1; i < len; i++)
     {
-        return -1;
+        if (vec[posmin] > vec[i])
+        {
+            posmin = i;
+        }
     }
-    else
-        return i;
+    return posmin;
 }

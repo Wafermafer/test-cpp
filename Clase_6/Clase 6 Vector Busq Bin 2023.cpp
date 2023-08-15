@@ -1,4 +1,4 @@
-// Name : Vector Buscar 2023.cpp
+// Name : Vector Busqueda binaria 2023.cpp
 
 #include <iostream>
 using namespace std;
@@ -8,9 +8,8 @@ void inicializar(int vec[], int cantP, int ValorIni);
 void mostrar(int vec[], int len1);
 void insertar(int vec[], int &len1, int valor, int pos);
 void insertarOrdenado(int vec[], int &len1, int valor);
-
 void sumarizo(int vec[], int lent1);
-int buscar(int vec[], int len, int valor);
+int busquedaBinaria(int vec[], int len, int valor);
 
 int main()
 {
@@ -39,7 +38,7 @@ int main()
 
     // 4 Sumarizo el vector y buscar el valor 8 ( digo la posición o mensaje de que no esta )
     sumarizo(numeros, len);
-    pos = buscar(numeros, len, 8);
+    pos = busquedaBinaria(numeros, len, 8);
     if (pos == -1)
     {
         cout << "No encontro el valor 8" << endl;
@@ -49,7 +48,8 @@ int main()
 
     // 5 Mostrar el vector
     mostrar(numeros, len);
-
+    //cout<<numeros[pos]<<endl;
+    
     return 0;
 }
 
@@ -110,17 +110,31 @@ void insertarOrdenado(int vec[], int &len1, int valor)
         insertar(vec, len1, valor, i);
 }
 
-int buscar(int vec[], int len, int valor)
+int busquedaBinaria(int vec[], int len, int valor)
 {
-    int i = 0;
-    while (i < len && vec[i] != valor)
+    // Es pos=-1 porque asumo que no lo encontro
+    int pos = -1;
+    int pri = 0;
+    // el len cuenta las pos utilizadas pero siempre teniamos como un numero mayor a la ultima pos utilizadas porque arracabamos en 0
+    int ult = len - 1;
+    int med;
+
+    while (pri <= ult && pos == -1)
     {
-        i++;
+        med = (pri + ult) / 2;
+        if (vec[med] == valor)
+        {
+            pos = med;
+        }
+        else if (valor > vec[med])
+        {
+            pri = med + 1;
+        }
+        else
+        {
+            ult = med - 1;
+        }
     }
-    if (i == len)
-    {
-        return -1;
-    }
-    else
-        return i;
+
+    return pos;
 }
