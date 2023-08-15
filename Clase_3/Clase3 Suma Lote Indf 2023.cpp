@@ -13,14 +13,14 @@ int main()
     cout << "Ingrese un valor o  ingrese un número negativo para terminar" << endl;
 
     // 2) Leer
-    cin << num;
+    cin >> num;
 
     // 3) Mientras ese valor sea mayor o igual que 0, sumar ese valor y pedir uno nuevo
     while (num >= 0)
     {
         suma = suma + num;
         cout << "Ingrese un valor o  ingrese un número negativo para terminar" << endl;
-        cin << num;
+        cin >> num;
     }
 
     // 4) Mostrar la suma
