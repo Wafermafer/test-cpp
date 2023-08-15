@@ -15,7 +15,7 @@
 using namespace std;
 
 // Tipo de dato
-struct Equipo
+struct Resultado
 {
     //Campos
     int codEq;
