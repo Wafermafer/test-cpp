@@ -1,4 +1,4 @@
-// Name : Pilas 2023.cpp
+// Name : Ejercicio colas 2023.cpp
 
 #include <iostream>
 #include <stdio.h>
@@ -23,20 +23,23 @@ int main()
 Nodo*colafte=NULL;
 Nodo*colafin=NULL;
 
-int rdo; 
+int carga;
+ cout<<"ingrese un valor y termine con 0"<<endl;
+ cin>>carga;
 
-agregar(colafte,colafin,1);
-agregar(colafte,colafin,2);
-agregar(colafte,colafin,3);
+ while(carga!=0){                //CAMBIAR ESTO POR UN FOR
+    agregar(colafte,colafin,carga);
+    cout<<"ingrese un valor y termine con 0"<<endl;
+    cin>>carga;
+ }
+ //tengo la cola cargada
+ int rdo;
+    while(colafte!=NULL){
+        rdo=suprimir(colafte,colafin);
+        cout<<"el valor ingresado fue: "<<endl;
+    }
+    //liberé TODA LA MEMORIA de la cola
 
-rdo= suprimir(colafte,colafin);
-cout<<"el valor extraido es: "<<rdo << endl;
-
-rdo= suprimir(colafte,colafin);
-cout<<"el valor extraido es: "<<rdo << endl;
-
-rdo= suprimir(colafte,colafin);
-cout<<"el valor extraido es: "<<rdo << endl;
 
   return 0;
 }
@@ -74,9 +77,7 @@ int suprimir(Nodo*&cfte, Nodo*&cfin){
   if (cfte==NULL){
     cfin=NULL;
   }
-
   //Delete del nodo
   delete(aux);
   return ret;
-
 }
